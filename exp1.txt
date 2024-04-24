@@ -1,0 +1,25 @@
+% Parameters num_users = 4; num bits 100; SNR_dB = 10;
+
+% Number of users
+
+% Number of bits per user
+
+% Signal-to-Noise Ratio (in dB)
+
+% Generate random data for each user user_data = randi([0,1], num_users, num_bits);
+
+% Generate spreading codes for each user spreading_codes = round(rand(num_users, num_bits))*2-1; % BPSK
+
+% Modulate data using spreading codes spread_data = user_data. spreading_codes;
+
+% Add noise to the transmitted signal SNR=10^(SNR_dB/10); % Convert SNR from dB to linear scale noise_power = 1/SNR; % Noise power noise = sqrt(noise_power/2)* (randn(num_users, num_bits) + li* randn(num_users, num_bits)): received_signal = spread_data + noise;
+
+% Demodulate received signal using the same spreading codes demodulated_data = received_signal.* spreading_codes;
+
+% Decode data for each user decoded_data = sum(demodulated_data, 2) > 0;
+
+% Display results
+
+for i=1:num users disp(['User', num2str(i), ' Original Data:', num2str(user_data(i,:))]); disp(['User', num2str(i), 'Decoded Data: ', num2str(decoded_data(i,:))]);
+
+end 
